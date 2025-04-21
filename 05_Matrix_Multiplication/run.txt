@@ -1,0 +1,26 @@
+# ===== EXPLANATION =====
+# Matrix Multiplication Program
+# This program performs matrix multiplication on CPU and GPU
+# Demonstrates parallel computation capabilities of GPU
+# The GPU version uses parallel processing to multiply matrices
+# and typically shows significant speedup for large matrices
+
+# ===== EXECUTION COMMANDS =====
+# GPU Version (CUDA)
+# Compile the CUDA program
+nvcc -o matMulGPU matMul.cu
+
+# Run the GPU version
+./matMulGPU
+
+# CPU Version
+# Compile the C++ program
+g++ -o matMulCPU matMul.cpp
+
+# Run the CPU version
+./matMulCPU
+
+# Note: The GPU version uses parallel processing to multiply matrices
+# and typically shows significant speedup for large matrices
+
+    

@@ -1,0 +1,47 @@
+SYCL (Intel oneAPI) Installation and Setup Guide for Ubuntu
+------------------------------------------------------------
+
+1. Download the Intel oneAPI Base Toolkit:
+
+   wget https://registrationcenter-download.intel.com/akdlm/IRC_NAS/18621/l_BaseKit_p_2024.0.0.49558_offline.sh
+
+   (This is the offline installer for oneAPI Base Toolkit 2024.0. Adjust the version if a newer one is available.)
+
+2. Make the installer executable:
+
+   chmod +x l_BaseKit_p_2024.0.0.49558_offline.sh
+
+3. Run the installer:
+
+   sudo ./l_BaseKit_p_2024.0.0.49558_offline.sh
+
+   - Select "custom installation" if prompted.
+   - Ensure that the "Intel DPC++/C++ Compiler" component is selected.
+
+4. Source the oneAPI environment **every time** before compiling or running SYCL/DPC++ code:
+
+   source /opt/intel/oneapi/setvars.sh
+
+5. (Optional but recommended) Add the source command to your .bashrc file to set up the environment automatically:
+
+   echo 'source /opt/intel/oneapi/setvars.sh' >> ~/.bashrc
+
+   Then apply the changes:
+
+   source ~/.bashrc
+
+6. Verify that the SYCL compiler (icpx) is available:
+
+   which icpx
+
+   Expected output (or similar):
+
+   /opt/intel/oneapi/compiler/latest/linux/bin/icpx
+
+7. Compile and run a SYCL program:
+
+   icpx -O2 -fsycl hello.cpp -o hello
+   ./hello
+
+   Replace 'hello.cpp' with your SYCL source file.
+

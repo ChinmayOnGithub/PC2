@@ -1,0 +1,23 @@
+# ===== EXPLANATION =====
+# Histogram Equalization Program
+# This program performs histogram equalization on images to enhance contrast
+# Input image: Sandesh.jpeg
+# Output images: result_cpu.jpg and result_GPU.jpg
+# The GPU version processes the image in parallel,
+# typically resulting in faster execution for large images
+
+# ===== EXECUTION COMMANDS =====
+# GPU Version (CUDA)
+# Compile the CUDA program
+nvcc -o histogramEqualizationGPU histogramEqualization.cu `pkg-config --cflags --libs opencv4`
+
+# Run the GPU version
+./histogramEqualizationGPU
+
+CPU:
+    g++ -o histogramEqualizationCPU histogramEqualization.cpp `pkg-config --cflags --libs opencv4`
+
+    ./histogramEqualizationCPU
+
+# Note: The GPU version processes the image in parallel,
+# typically resulting in faster execution for large images

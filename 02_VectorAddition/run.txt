@@ -1,0 +1,24 @@
+# ===== EXPLANATION =====
+# Vector Addition Program
+# This program demonstrates basic vector addition on CPU and GPU
+# The program adds two vectors of size N and stores the result in a third vector
+# The GPU version typically runs faster for large vector sizes
+# due to parallel processing capabilities of the GPU
+
+# ===== EXECUTION COMMANDS =====
+# GPU Version (CUDA)
+# Compile the CUDA program
+nvcc -o vectorAdditionGPU vectorAdditionGPU.cu
+
+# Run the GPU version
+./vectorAdditionGPU
+
+# CPU Version
+# Compile the C++ program
+g++ -o vectorAdditionCPU vectorAdditionCPU.cpp
+
+# Run the CPU version
+./vectorAdditionCPU
+
+# Note: The GPU version typically runs faster for large vector sizes
+# due to parallel processing capabilities of the GPU

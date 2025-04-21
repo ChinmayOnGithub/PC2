@@ -1,0 +1,24 @@
+# ===== EXPLANATION =====
+# SYCL Pi Calculation Program
+# This program calculates Pi using SYCL
+# Demonstrates SYCL programming model for heterogeneous computing
+# SYCL is a higher-level programming model for heterogeneous computing
+# that can target different hardware platforms including CPUs, GPUs, and FPGAs
+
+# ===== EXECUTION COMMANDS =====
+# SYCL Version
+# Compile the SYCL program
+g++ -o pi SYCL_PI.cpp -lOpenCL
+
+# Run the SYCL version
+./pi
+
+# CPU Version
+# Compile the C++ program
+g++ -o pi_cpu pi.cpp
+
+# Run the CPU version
+./pi_cpu
+
+# Note: SYCL is a higher-level programming model for heterogeneous computing
+# that can target different hardware platforms including CPUs, GPUs, and FPGAs

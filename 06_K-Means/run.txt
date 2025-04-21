@@ -1,0 +1,30 @@
+# ===== EXPLANATION =====
+# K-Means Clustering Program
+# This program implements K-Means clustering algorithm using CPU, GPU, and OpenACC
+# Uses IRIS dataset (IRIS.csv) for demonstration
+# The program clusters the IRIS dataset into k clusters
+# Different implementations show varying performance characteristics
+
+# ===== EXECUTION COMMANDS =====
+# GPU Version (CUDA)
+# Compile the CUDA program
+nvcc -o kMeans kMeans.cu
+
+# Run the GPU version
+./kMeans
+
+# CPU Version
+# Compile the C++ program
+g++ -o kMeansCPU kMeansCPU.cpp
+
+# Run the CPU version
+./kMeansCPU
+
+# OpenACC Version
+# Compile the OpenACC program
+g++ -fopenacc -o kmeans kMeansOpenACC.cpp
+
+# Run the OpenACC version
+./kmeans
+
+    

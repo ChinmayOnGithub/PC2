@@ -1,0 +1,22 @@
+# Pi Calculation Program
+# This program calculates Pi using Monte Carlo method
+# Implements both CPU and OpenACC versions
+
+# OpenACC Version
+# Compile the OpenACC program
+g++ -fopenacc -o openACCPI openACC_PI.cpp
+
+# Run the OpenACC version
+./openACCPI
+
+# CPU Version
+# Compile the C++ program
+g++ -o pi pi.cpp
+
+# Run the CPU version
+./pi
+
+# Note: The program uses Monte Carlo method to estimate Pi
+# OpenACC version demonstrates parallel computing capabilities
+
+    
