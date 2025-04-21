@@ -1,0 +1,43 @@
+# Histogram Equalization Experiment Documentation
+
+## Overview
+This experiment implements histogram equalization, an image processing technique to enhance image contrast, comparing CPU and GPU implementations.
+
+## Purpose
+- Demonstrate image processing on GPU
+- Compare CPU and GPU performance for histogram operations
+- Showcase OpenCV integration with CUDA
+
+## Technical Details
+- Input: input.jpg
+- Output: result_cpu.jpg and result_GPU.jpg
+- Algorithm steps:
+  1. Calculate image histogram
+  2. Compute cumulative distribution function
+  3. Apply equalization transformation
+  4. Generate enhanced image
+
+## Performance Characteristics
+- CPU version processes pixels sequentially
+- GPU version processes pixels in parallel
+- Performance factors:
+  - Image size
+  - GPU architecture
+  - Memory access patterns
+  - OpenCV optimization level
+
+## Implementation Notes
+- Uses OpenCV for image I/O and basic operations
+- CPU version: Standard C++ with OpenCV
+- GPU version: CUDA with:
+  - Parallel histogram calculation
+  - Shared memory optimization
+  - Efficient memory transfers
+
+## Expected Results
+- Both implementations produce visually similar results
+- GPU version shows significant speedup for large images
+- Quality metrics:
+  - Visual enhancement
+  - Histogram distribution
+  - Processing time 

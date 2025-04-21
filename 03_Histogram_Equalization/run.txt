@@ -14,10 +14,11 @@ nvcc -o histogramEqualizationGPU histogramEqualization.cu `pkg-config --cflags -
 # Run the GPU version
 ./histogramEqualizationGPU
 
-CPU:
-    g++ -o histogramEqualizationCPU histogramEqualization.cpp `pkg-config --cflags --libs opencv4`
-
-    ./histogramEqualizationCPU
+# CPU Version
+g++ -o histogramEqualizationCPU histogramEqualization.cpp `pkg-config --cflags --libs opencv4`
+./histogramEqualizationCPU
 
 # Note: The GPU version processes the image in parallel,
 # typically resulting in faster execution for large images
+
+# Note: Requires input.jpg in the same directory
