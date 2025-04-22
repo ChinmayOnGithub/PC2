@@ -1,7 +1,7 @@
 # ===== EXPLANATION =====
 # Image Compression Program with Profiling
 # This program compresses images using both CPU and GPU implementations
-# Input image: Sandesh.jpeg
+# Input image: input.jpeg
 # Output images: compressed_2x_CPU.jpg, compressed_2x_GPU.jpg, compressed_4x_CPU.jpg, compressed_4x_GPU.jpg
 # The program supports different compression ratios (2x and 4x)
 # The GPU version is profiled using NVIDIA's Nsight Systems

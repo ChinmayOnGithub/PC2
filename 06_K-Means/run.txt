@@ -15,6 +15,10 @@ g++ -O3 -o kMeansCPU kMeansCPU.cpp
 ./kMeansCPU
 
 # OpenACC Version
+pgc++ -O3 -acc -Minfo=accel -o kmeans kMeansOpenACC.cpp
+./kmeans
+
+# alternative way for openACC
 g++ -O3 -fopenacc -o kmeans kMeansOpenACC.cpp
 ./kmeans
 

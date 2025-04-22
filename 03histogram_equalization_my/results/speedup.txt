@@ -1,2 +1,4 @@
 GPU 143.488 ms
 CPU 157 ms
+GPU 238.019 ms
+CPU 213 ms

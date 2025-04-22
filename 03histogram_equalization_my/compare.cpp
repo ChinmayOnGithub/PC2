@@ -82,3 +82,13 @@ int main()
     displayComparison();
     return 0;
 }
+
+/*
+# Compilation and Execution Commands for compare.cpp
+
+## Compile
+g++ -o compare compare.cpp `pkg-config --cflags --libs opencv4`
+
+## Run
+./compare
+*/

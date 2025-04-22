@@ -1,58 +1,142 @@
-# Image Compression with Profiling Experiment Documentation
+# Image Compression with CUDA - Performance Analysis Guide
+
+## CUDA Profiling Tools Overview
+
+### 1. NVIDIA Nsight Systems (nsys)
+- Modern, system-wide performance analysis tool
+- Provides visual and statistical insights into:
+  - GPU workload
+  - CPU thread activity
+  - Memory operations
+  - API calls timing
+- Output formats:
+  - .nsys-rep: Visual report for GUI analysis
+  - .sqlite: Database containing detailed metrics
+  - .qdstrm: Raw profiling data
+
+### 2. NVIDIA nvprof (Legacy Tool)
+- Command-line profiler for CUDA applications
+- Provides detailed metrics about:
+  - Kernel execution time
+  - Memory transfers
+  - Hardware counters
+- Being replaced by Nsight Systems for newer CUDA versions
+
+### 3. Why Multiple Output Formats?
+- .nsys-rep: 
+  - Interactive visualization
+  - Timeline view of operations
+  - Easy to spot bottlenecks visually
+- .sqlite:
+  - Programmatic analysis
+  - Custom queries for specific metrics
+  - Data extraction for reports
+- .qdstrm:
+  - Raw data storage
+  - Can be converted to other formats
+  - Useful for data preservation
 
 ## Overview
-This experiment implements image compression with performance profiling, comparing CPU and GPU implementations while analyzing performance characteristics using NVIDIA's Nsight Systems.
+Implementation of image compression using CUDA, demonstrating downsampling on GPU with performance analysis using NVIDIA Nsight Systems.
 
-## Purpose
-- Demonstrate image compression on GPU
-- Showcase performance profiling with Nsight Systems
-- Compare CPU and GPU implementations
-- Analyze different compression ratios
+## Compilation & Running
+1. CPU Version:
+   ```bash
+   g++ -O3 -o compressCPU compress.cpp `pkg-config --cflags --libs opencv4`
+   ./compressCPU
+   ```
 
-## Technical Details
-- Input: input.jpg
-- Output: 
-  - compressed_2x_CPU.jpg
-  - compressed_2x_GPU.jpg
-  - compressed_4x_CPU.jpg
-  - compressed_4x_GPU.jpg
-- Compression ratios: 2x and 4x
-- Profiling output:
-  - compress_profile.nsys-rep
-  - compress_profile.sqlite
+2. GPU Version:
+   ```bash
+   nvcc -o compress compress.cu `pkg-config --cflags --libs opencv4`
+   ```
 
-## Performance Analysis
-- Nsight Systems profiling provides:
-  - GPU utilization
-  - Memory bandwidth
-  - Kernel execution times
-  - API call traces
-- Performance metrics:
-  - Compression time
-  - Image quality
-  - Memory usage
-  - GPU occupancy
+3. Profile with Nsight:
+   ```bash
+   nsys profile --stats=true ./compress
+   ```
 
-## Implementation Notes
-- Uses OpenCV for image processing
-- GPU version features:
-  - Parallel processing
-  - Memory optimization
-  - Profiling instrumentation
-- CPU version:
-  - Sequential processing
-  - Standard compression algorithms
+## Performance Analysis Guide
 
-## Expected Results
-- Different compression ratios show varying:
-  - File sizes
-  - Image quality
-  - Processing times
-- Profiling data helps identify:
-  - Performance bottlenecks
-  - Memory access patterns
-  - GPU utilization
-- Quality metrics:
-  - Compression ratio
-  - Image quality
-  - Processing speed 
+### Key Performance Metrics
+
+1. CUDA API Calls Performance:
+   - cudaMalloc: ~42M ns/call (42 milliseconds)
+     * High time indicates memory allocation overhead
+   - cudaMemcpy: ~255K ns/call (0.255 milliseconds)
+     * Reasonable for data transfer size
+   - cudaLaunchKernel: ~280K ns/call (0.28 milliseconds)
+     * Normal launch overhead
+   - cudaFree: ~65K ns/call (0.065 milliseconds)
+     * Expected cleanup time
+
+2. Kernel Execution:
+   - downsampleKernel: ~15.6K ns/call (0.0156 milliseconds)
+     * Very efficient computation time
+     * Shows good GPU utilization
+
+3. Memory Transfer Times:
+   - Host to Device: ~1.05 MB/transfer
+     * Image data upload
+   - Device to Host: ~0.164 MB/transfer
+     * Compressed image download
+     * Smaller due to compression
+
+### How to Analyze Performance
+
+1. Identify Bottlenecks:
+   - Check highest time-consuming operations
+   - Look for unexpected waiting times
+   - Monitor memory transfer overhead
+   - Analyze CPU-GPU synchronization points
+
+2. Key Areas to Focus:
+   - Memory Operations (cudaMalloc, cudaMemcpy)
+   - Kernel Execution Time
+   - CPU-GPU Synchronization
+   - Memory Transfer Patterns
+   - Thread Block Configuration
+
+3. Common Performance Issues:
+   - High cudaMalloc times: Consider memory pooling
+   - Large memory transfers: Optimize data movement
+   - Low kernel utilization: Check thread configuration
+   - Memory access patterns: Ensure coalesced access
+
+### Using Nsight Systems GUI
+
+1. Open Report:
+   ```bash
+   nsight-sys report2.nsys-rep
+   ```
+
+2. Key Sections to Analyze:
+   - CUDA API calls timeline
+     * Look for long bars indicating bottlenecks
+     * Check for overlapping operations
+   - Kernel execution blocks
+     * Verify kernel occupancy
+     * Check for serialization
+   - Memory operations
+     * Analyze transfer patterns
+     * Look for unnecessary transfers
+   - System CPU usage
+     * Check for CPU bottlenecks
+     * Identify synchronization issues
+
+3. Performance Optimization Tips:
+   - Reduce memory allocations/deallocations
+   - Batch small transfers into larger ones
+   - Optimize kernel occupancy
+   - Consider persistent/pinned memory for frequent transfers
+   - Use asynchronous operations where possible
+
+## Current Performance Summary
+- CPU Version: ~0.002775 seconds
+- Main bottleneck: Memory operations (cudaMalloc)
+- Kernel execution is efficient (~15.6K ns)
+- Memory transfer overhead is moderate
+- Optimization opportunities:
+  * Implement memory pooling
+  * Use pinned memory
+  * Consider batch processing for multiple images 

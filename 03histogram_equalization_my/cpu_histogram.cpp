@@ -53,6 +53,8 @@ int main()
     return 0;
 }
 
-// Execution Command:
-// g++ -o cpu_histogram cpu_histogram.cpp `pkg-config --cflags --libs opencv4`
-// ./cpu_histogram
+/*
+Execution Command:
+g++ -o cpu_histogram cpu_histogram.cpp `pkg-config --cflags --libs opencv4`
+./cpu_histogram
+ */

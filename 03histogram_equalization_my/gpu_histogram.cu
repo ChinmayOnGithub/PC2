@@ -143,6 +143,7 @@ Compilation and Execution:
 ------------------------
 Compilation:
 nvcc gpu_histogram.cu -o gpu `pkg-config --cflags --libs opencv4`
+./gpu
 
 Alternative (if pkg-config not available):
 nvcc gpu_histogram.cu -o gpu -I/usr/include/opencv4 -lopencv_core -lopencv_imgcodecs -lopencv_highgui
