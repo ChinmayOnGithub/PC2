@@ -7,15 +7,12 @@
 # typically resulting in faster execution for large images
 
 # ===== EXECUTION COMMANDS =====
-# GPU Version (CUDA)
-# Compile the CUDA program
-nvcc -o histogramEqualizationGPU histogramEqualization.cu `pkg-config --cflags --libs opencv4`
-
-# Run the GPU version
+# GPU Version
+nvcc -O3 -o histogramEqualizationGPU histogramEqualization.cu `pkg-config --cflags --libs opencv4`
 ./histogramEqualizationGPU
 
 # CPU Version
-g++ -o histogramEqualizationCPU histogramEqualization.cpp `pkg-config --cflags --libs opencv4`
+g++ -O3 -o histogramEqualizationCPU histogramEqualization.cpp `pkg-config --cflags --libs opencv4`
 ./histogramEqualizationCPU
 
 # Note: The GPU version processes the image in parallel,

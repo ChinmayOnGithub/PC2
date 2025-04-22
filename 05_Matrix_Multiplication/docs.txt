@@ -1,0 +1,53 @@
+# Matrix Multiplication Experiment Documentation
+
+## Overview
+This experiment implements matrix multiplication on both CPU and GPU, demonstrating the parallel computation capabilities of GPUs for linear algebra operations.
+
+## Purpose
+- Demonstrate parallel matrix operations
+- Compare CPU and GPU performance
+- Showcase CUDA optimization techniques
+- Illustrate fundamental linear algebra on GPU
+
+## Technical Details
+- Implements C = A × B
+- Matrix dimensions: N × N
+- CPU: Standard triple-loop implementation
+- GPU: Parallel implementation with:
+  - Thread blocks
+  - Shared memory
+  - Memory coalescing
+
+## Performance Characteristics
+- CPU version: O(N³) sequential operations
+- GPU version: Parallel processing with:
+  - Block-level parallelism
+  - Thread-level parallelism
+  - Memory optimization
+- Performance factors:
+  - Matrix size
+  - GPU architecture
+  - Memory hierarchy usage
+  - Thread block configuration
+
+## Implementation Notes
+- CPU version:
+  - Standard C++ implementation
+  - Sequential processing
+  - Cache-aware optimization
+- GPU version features:
+  - Shared memory usage
+  - Thread block optimization
+  - Memory access patterns
+  - Grid configuration
+
+## Expected Results
+- Both implementations produce identical results
+- GPU version shows significant speedup for:
+  - Large matrices (N > 100)
+  - Square matrices
+  - Power-of-2 dimensions
+- Performance metrics:
+  - GFLOPS (Giga Floating Point Operations per Second)
+  - Memory bandwidth utilization
+  - Kernel execution time 

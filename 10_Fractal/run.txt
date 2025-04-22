@@ -1,22 +1,18 @@
 # Fractal Image Compression Program
 # This program implements fractal image compression using CPU and SYCL
-# Input image: Sandesh.jpeg
+# Input image: input.jpg
 # Output images: output.png, output1.png
 
 # CPU Version
-# Compile the C++ program
-g++ -o compress compression.cpp
-
-# Run the CPU version
+g++ -O3 -o compress compression.cpp `pkg-config --cflags --libs opencv4`
 ./compress
 
 # SYCL Version
-# Compile the SYCL program
-g++ -o syclCompress syclCompress.cpp -lOpenCL
-
-# Run the SYCL version
+g++ -O3 -o syclCompress syclCompress.cpp -lOpenCL `pkg-config --cflags --libs opencv4`
 ./syclCompress
 
 # Note: Fractal compression is a lossy compression method for digital images
 # based on fractals. The method is best suited for photographs of natural scenes
 # and works by finding self-similar patterns in the image.
+
+# Note: Requires input.jpg in the same directory

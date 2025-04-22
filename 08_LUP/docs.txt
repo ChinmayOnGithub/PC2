@@ -1,0 +1,64 @@
+# LUP Decomposition Experiment Documentation
+
+## Overview
+This experiment implements LUP decomposition (matrix factorization) using CPU, GPU (CUDA), and OpenACC, demonstrating different parallel computing approaches for solving systems of linear equations.
+
+## Purpose
+- Demonstrate parallel matrix factorization
+- Compare different parallel computing models
+- Showcase linear algebra on GPU
+- Illustrate OpenACC for scientific computing
+
+## Technical Details
+- Algorithm: LUP decomposition
+  - L: Lower triangular matrix
+  - U: Upper triangular matrix
+  - P: Permutation matrix
+- Applications:
+  - Solving linear systems
+  - Matrix inversion
+  - Determinant calculation
+- Implementations:
+  - CPU: Sequential processing
+  - GPU: CUDA parallel processing
+  - OpenACC: Directive-based parallelization
+
+## Performance Characteristics
+- CPU version:
+  - Sequential processing
+  - Memory-bound operations
+  - Cache utilization
+- GPU version:
+  - Parallel row operations
+  - Shared memory usage
+  - Memory optimization
+- OpenACC version:
+  - Automatic parallelization
+  - Directive-based optimization
+  - Memory management
+
+## Implementation Notes
+- CPU version:
+  - Standard C++ implementation
+  - Sequential processing
+  - Memory optimization
+- GPU version features:
+  - Parallel row operations
+  - Shared memory usage
+  - Thread synchronization
+- OpenACC version:
+  - Directive-based parallelization
+  - Automatic memory management
+  - Loop optimization
+
+## Expected Results
+- All implementations produce identical decompositions
+- Performance comparison:
+  - GPU typically fastest for large matrices
+  - OpenACC provides good balance of performance and code simplicity
+  - CPU version suitable for small matrices
+- Quality metrics:
+  - Numerical accuracy
+  - Processing time
+  - Memory usage
+  - Parallel efficiency 

@@ -1,0 +1,64 @@
+# Intel VTune Profiler Experiment Documentation
+
+## Overview
+This experiment demonstrates the use of Intel VTune Profiler for performance analysis of vector addition on both CPU and GPU, showcasing different profiling capabilities and optimization techniques.
+
+## Purpose
+- Demonstrate Intel VTune Profiler usage
+- Analyze CPU and GPU performance
+- Identify performance bottlenecks
+- Showcase optimization techniques
+
+## Technical Details
+- Profiling tools:
+  - Intel VTune Profiler
+  - Performance counters
+  - Hardware event sampling
+- Analysis types:
+  - Hotspot analysis
+  - Memory access analysis
+  - Threading analysis
+  - GPU offload analysis
+
+## Performance Analysis
+- CPU profiling:
+  - Instruction-level analysis
+  - Cache utilization
+  - Memory bandwidth
+  - Thread synchronization
+- GPU profiling:
+  - Kernel execution
+  - Memory transfers
+  - Occupancy
+  - Warp efficiency
+
+## Implementation Notes
+- CPU version:
+  - Standard C++ implementation
+  - Memory access patterns
+  - Cache optimization
+- GPU version:
+  - CUDA implementation
+  - Memory management
+  - Thread block configuration
+- Profiling setup:
+  - Event configuration
+  - Sampling rate
+  - Data collection
+
+## Expected Results
+- Performance insights:
+  - Hotspots identification
+  - Memory bottlenecks
+  - Threading issues
+  - GPU utilization
+- Optimization opportunities:
+  - Memory access patterns
+  - Thread configuration
+  - Cache utilization
+  - Kernel optimization
+- Metrics:
+  - Execution time
+  - Memory bandwidth
+  - Cache hit rates
+  - GPU occupancy 

@@ -1,0 +1,92 @@
+# Fractal Image Compression Experiment Documentation
+
+## Overview
+This experiment implements fractal image compression using both CPU and SYCL implementations, demonstrating advanced image compression techniques based on self-similarity patterns in images. Fractal compression is a lossy compression method that works by finding self-similar patterns within the image, making it particularly effective for natural scenes and photographs.
+
+## Purpose
+- Demonstrate fractal image compression techniques
+- Compare CPU and SYCL implementations
+- Showcase advanced image processing capabilities
+- Illustrate self-similarity based compression
+- Evaluate performance of different computing platforms
+
+## Technical Details
+- Input: input.jpg
+- Output: 
+  - output.png (CPU version)
+  - output1.png (SYCL version)
+- Algorithm steps:
+  1. Image partitioning into range and domain blocks
+  2. Self-similarity search and matching
+  3. Affine transformation calculation
+  4. Compression encoding and storage
+- Implementations:
+  - CPU: Sequential processing implementation
+  - SYCL: Heterogeneous computing implementation
+- Compression parameters:
+  - Block size
+  - Search window
+  - Transformation types
+  - Quality threshold
+
+## Performance Characteristics
+- CPU version:
+  - Sequential processing
+  - Memory-bound operations
+  - Cache utilization
+  - Single-threaded execution
+- SYCL version:
+  - Parallel processing
+  - Device selection (CPU/GPU)
+  - Memory management
+  - Multi-threaded execution
+- Performance factors:
+  - Image size and resolution
+  - Compression ratio
+  - Device capabilities
+  - Memory bandwidth
+  - Search window size
+
+## Implementation Notes
+- CPU version:
+  - Standard C++ implementation
+  - Sequential processing
+  - Memory optimization
+  - Block matching algorithm
+- SYCL version features:
+  - Parallel processing
+  - Device selection
+  - Memory management
+  - Queue management
+  - Work-group optimization
+- Key optimizations:
+  - Block matching acceleration
+  - Transformation search optimization
+  - Memory access patterns
+  - Parallel encoding
+  - Work-group size tuning
+
+## Expected Results
+- Compression outcomes:
+  - Reduced file size
+  - Preserved image quality
+  - Self-similarity patterns
+  - Compression ratio
+- Performance comparison:
+  - SYCL version typically faster
+  - Quality vs. speed trade-off
+  - Memory usage patterns
+  - Device utilization
+- Quality metrics:
+  - Compression ratio
+  - Image quality (PSNR)
+  - Processing time
+  - Memory efficiency
+  - Visual quality assessment
+
+## Usage Notes
+- Input image should be in JPEG format
+- Output will be in PNG format
+- Compression quality can be adjusted
+- SYCL version requires OpenCL support
+- Memory requirements depend on image size 

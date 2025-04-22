@@ -1,0 +1,45 @@
+# K-Means Clustering Experiment Documentation
+
+## Overview
+Implementation of K-means clustering using CPU, GPU (CUDA), and OpenACC approaches. Demonstrates parallel computing capabilities on a classic machine learning algorithm.
+
+## Dataset & Algorithm
+- Input: IRIS.csv (150 samples, 4 features, 3 classes)
+- Algorithm:
+  1. Initialize K centroids (K=3)
+  2. Assign points to nearest centroid
+  3. Update centroids as mean of assigned points
+  4. Repeat until convergence
+
+## Implementations
+### CPU Version
+- Sequential C++ implementation
+- Single-threaded computation
+- Cache-friendly data layout
+
+### GPU Version (CUDA)
+- Parallel point assignment
+- Shared memory optimization
+- Atomic operations for updates
+- Thread block optimization
+
+### OpenACC Version
+- Directive-based parallelization
+- Automatic data management
+- Minimal code changes from CPU
+
+## Performance Notes
+- CPU: Best for small datasets
+- GPU: Efficient for large datasets, parallel processing
+- OpenACC: Good balance of performance and code simplicity
+
+## Usage
+1. Compile:
+   - CPU: g++ -O3 -o kMeansCPU kMeansCPU.cpp
+   - GPU: nvcc -O3 -o kMeans kMeans.cu
+   - OpenACC: g++ -O3 -fopenacc -o kmeans kMeansOpenACC.cpp
+
+2. Run:
+   - Ensure IRIS.csv is present
+   - Execute respective binaries
+   - Check output for cluster assignments and timing 

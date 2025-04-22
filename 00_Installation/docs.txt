@@ -1,0 +1,66 @@
+# Parallel Computing Experiments - Installation Guide
+
+## Required Dependencies
+1. Basic Development Tools:
+   ```bash
+   sudo apt update
+   sudo apt install build-essential cmake pkg-config
+   ```
+
+2. CUDA Toolkit:
+   ```bash
+   sudo apt install nvidia-cuda-toolkit
+   ```
+
+3. OpenCV:
+   ```bash
+   sudo apt install libopencv-dev
+   ```
+
+4. Intel OneAPI (for SYCL):
+   ```bash
+   sudo apt install intel-oneapi-compiler-dpcpp-cpp
+   ```
+
+5. OpenACC:
+   ```bash
+   sudo apt install gcc-offload-nvptx
+   ```
+
+6. Intel VTune:
+   - Download from Intel's website
+   - Follow installation guide at: https://www.intel.com/vtune-install
+
+## Verification
+1. CUDA:
+   ```bash
+   nvcc --version
+   nvidia-smi
+   ```
+
+2. OpenCV:
+   ```bash
+   pkg-config --modversion opencv4
+   ```
+
+3. SYCL:
+   ```bash
+   dpcpp --version
+   ```
+
+## Common Issues
+1. CUDA not found: Add to PATH
+   ```bash
+   export PATH=/usr/local/cuda/bin:$PATH
+   ```
+
+2. OpenCV linking: Use pkg-config
+   ```bash
+   pkg-config --cflags --libs opencv4
+   ```
+
+3. NVIDIA Driver: Install if needed
+   ```bash
+   ubuntu-drivers devices
+   sudo ubuntu-drivers autoinstall
+   ``` 

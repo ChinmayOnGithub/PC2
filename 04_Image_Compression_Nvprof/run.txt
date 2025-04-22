@@ -8,16 +8,12 @@
 # Profile results are saved in compress_profile.nsys-rep and compress_profile.sqlite
 
 # ===== EXECUTION COMMANDS =====
-# GPU Version (CUDA) with Profiling
-# Compile the CUDA program
-nvcc -o compress compress.cu `pkg-config --cflags --libs opencv4`
-
-# Run the GPU version with profiling
+# GPU Version with Profiling
+nvcc -O3 -o compress compress.cu `pkg-config --cflags --libs opencv4`
 nsys profile --stats=true ./compress
 
 # CPU Version
-# Compile the C++ program
-g++ -o compressCPU compress.cpp `pkg-config --cflags --libs opencv4`
-
-# Run the CPU version
+g++ -O3 -o compressCPU compress.cpp `pkg-config --cflags --libs opencv4`
 ./compressCPU
+
+# Note: Requires input.jpg in the same directory

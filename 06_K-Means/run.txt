@@ -6,25 +6,16 @@
 # Different implementations show varying performance characteristics
 
 # ===== EXECUTION COMMANDS =====
-# GPU Version (CUDA)
-# Compile the CUDA program
-nvcc -o kMeans kMeans.cu
-
-# Run the GPU version
+# GPU Version
+nvcc -O3 -o kMeans kMeans.cu
 ./kMeans
 
 # CPU Version
-# Compile the C++ program
-g++ -o kMeansCPU kMeansCPU.cpp
-
-# Run the CPU version
+g++ -O3 -o kMeansCPU kMeansCPU.cpp
 ./kMeansCPU
 
 # OpenACC Version
-# Compile the OpenACC program
-g++ -fopenacc -o kmeans kMeansOpenACC.cpp
-
-# Run the OpenACC version
+g++ -O3 -fopenacc -o kmeans kMeansOpenACC.cpp
 ./kmeans
 
     

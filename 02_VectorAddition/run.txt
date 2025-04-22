@@ -6,18 +6,12 @@
 # due to parallel processing capabilities of the GPU
 
 # ===== EXECUTION COMMANDS =====
-# GPU Version (CUDA)
-# Compile the CUDA program
-nvcc -o vectorAdditionGPU vectorAdditionGPU.cu
-
-# Run the GPU version
+# GPU Version
+nvcc -O3 -o vectorAdditionGPU vectorAdditionGPU.cu
 ./vectorAdditionGPU
 
 # CPU Version
-# Compile the C++ program
-g++ -o vectorAdditionCPU vectorAdditionCPU.cpp
-
-# Run the CPU version
+g++ -O3 -o vectorAdditionCPU vectorAdditionCPU.cpp
 ./vectorAdditionCPU
 
 # Note: The GPU version typically runs faster for large vector sizes

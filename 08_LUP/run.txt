@@ -7,25 +7,16 @@
 # characteristics based on matrix size and hardware capabilities.
 
 # ===== EXECUTION COMMANDS =====
-# GPU Version (CUDA)
-# Compile the CUDA program
-nvcc -o cuda_lu lup_cuda.cu
-
-# Run the GPU version
+# GPU Version
+nvcc -O3 -o cuda_lu lup_cuda.cu
 ./cuda_lu
 
 # CPU Version
-# Compile the C++ program
-g++ -o cpu_lu lup_cpu.cpp
-
-# Run the CPU version
+g++ -O3 -o cpu_lu lup_cpu.cpp
 ./cpu_lu
 
 # OpenACC Version
-# Compile the OpenACC program
-g++ -fopenacc -o lup_openacc lup_openacc.cpp
-
-# Run the OpenACC version
+g++ -O3 -fopenacc -o lup_openacc lup_openacc.cpp
 ./lup_openacc
 
 # Note: LUP decomposition is used for solving systems of linear equations

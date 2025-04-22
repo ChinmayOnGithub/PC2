@@ -1,0 +1,61 @@
+# SYCL Pi Calculation Experiment Documentation
+
+## Overview
+This experiment calculates Pi using the Monte Carlo method, implementing both CPU and SYCL versions to demonstrate heterogeneous computing capabilities.
+
+## Purpose
+- Demonstrate SYCL programming model
+- Compare CPU and SYCL performance
+- Showcase heterogeneous computing
+- Illustrate Monte Carlo method
+
+## Technical Details
+- Algorithm: Monte Carlo method
+  - Random point generation
+  - Point-in-circle test
+  - Pi estimation
+- Implementations:
+  - CPU: Sequential processing
+  - SYCL: Heterogeneous computing
+- Hardware targets:
+  - CPUs
+  - GPUs
+  - FPGAs
+
+## Performance Characteristics
+- CPU version:
+  - Sequential processing
+  - Random number generation
+  - Memory access patterns
+- SYCL version:
+  - Parallel processing
+  - Device selection
+  - Memory management
+- Performance factors:
+  - Number of samples
+  - Device capabilities
+  - Memory bandwidth
+  - Random number generation
+
+## Implementation Notes
+- CPU version:
+  - Standard C++ implementation
+  - Sequential processing
+  - Random number generation
+- SYCL version features:
+  - Device selection
+  - Parallel processing
+  - Memory management
+  - Queue management
+
+## Expected Results
+- Both implementations converge to Pi
+- Performance comparison:
+  - SYCL version typically faster
+  - Performance depends on device
+  - Memory access patterns
+- Quality metrics:
+  - Accuracy
+  - Processing time
+  - Memory usage
+  - Device utilization 

@@ -2,16 +2,18 @@
 #include <opencv2/opencv.hpp>
 #include <vector>
 
-using namespace std;  // To avoid writing std:: everywhere
-using namespace cv;   // To avoid writing cv:: everywhere
+using namespace std; // To avoid writing std:: everywhere
+using namespace cv;  // To avoid writing cv:: everywhere
 
-void reduce_image(sycl::queue& q, const vector<float>& input_image, vector<float>& output_image, int width, int height, int factor) {
+void reduce_image(sycl::queue &q, const vector<float> &input_image, vector<float> &output_image, int width, int height, int factor)
+{
     int output_width = width / factor, output_height = height / factor;
 
     sycl::buffer<float> input_buf(input_image.data(), sycl::range<1>(input_image.size()));
     sycl::buffer<float> output_buf(output_image.data(), sycl::range<1>(output_image.size()));
 
-    q.submit([&](sycl::handler& cgh) {
+    q.submit([&](sycl::handler &cgh)
+             {
         auto input_acc = input_buf.get_access<sycl::access::mode::read>(cgh);
         auto output_acc = output_buf.get_access<sycl::access::mode::write>(cgh);
 
@@ -26,14 +28,16 @@ void reduce_image(sycl::queue& q, const vector<float>& input_image, vector<float
                         sum += input_acc[input_y * width + input_x];
                 }
             output_acc[y * output_width + x] = sum / (factor * factor);
-        });
-    }).wait();
+        }); })
+        .wait();
 }
 
-int main() {
+int main()
+{
     // Load image (grayscale)
-    Mat img = imread("Sandesh.jpeg", IMREAD_GRAYSCALE);
-    if (img.empty()) return -1;
+    Mat img = imread("input.jpg", IMREAD_GRAYSCALE);
+    if (img.empty())
+        return -1;
 
     int width = img.cols, height = img.rows, factor = 4;
 

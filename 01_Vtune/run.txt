@@ -1,9 +1,7 @@
-GPU: 
-    nvcc -o vectorAdditionGPU vectorAdditionGPU.cu
+# GPU Version
+nvcc -O3 -o vectorAdditionGPU vectorAdditionGPU.cu
+vtune -collect gpu-hotspots ./vectorAdditionGPU
 
-    ./vectorAdditionGPU
-
-CPU:
-    g++ -o vectorAdditionCPU vectorAdditionCPU.cpp
-
-    ./vectorAdditionCPU
+# CPU Version
+g++ -O3 -o vectorAdditionCPU vectorAdditionCPU.cpp
+vtune -collect hotspots ./vectorAdditionCPU

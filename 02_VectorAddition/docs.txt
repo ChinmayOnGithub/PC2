@@ -1,0 +1,39 @@
+# Vector Addition Experiment Documentation
+
+## Overview
+This experiment demonstrates basic vector addition on both CPU and GPU, showcasing the fundamental concepts of parallel computing and GPU acceleration.
+
+## Purpose
+- Demonstrate basic parallel computing concepts
+- Compare CPU and GPU performance for vector operations
+- Showcase CUDA programming basics
+
+## Technical Details
+- Implements vector addition: C = A + B
+- Vector size: N elements
+- CPU implementation uses sequential processing
+- GPU implementation uses parallel processing with CUDA
+
+## Performance Characteristics
+- CPU version processes elements sequentially
+- GPU version processes elements in parallel
+- GPU typically shows better performance for large vector sizes (N > 1000)
+- Performance improvement depends on:
+  - Vector size
+  - GPU architecture
+  - Memory bandwidth
+
+## Implementation Notes
+- CPU version: Standard C++ implementation
+- GPU version: CUDA implementation with:
+  - Thread blocks
+  - Grid dimensions
+  - Memory management (host/device)
+
+## Expected Results
+- Both implementations produce identical results
+- GPU version shows speedup for larger vectors
+- Performance metrics can be measured using:
+  - Execution time
+  - Throughput (elements/second)
+  - Memory bandwidth utilization 

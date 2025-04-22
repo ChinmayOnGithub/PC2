@@ -1,0 +1,58 @@
+# Image Compression with Profiling Experiment Documentation
+
+## Overview
+This experiment implements image compression with performance profiling, comparing CPU and GPU implementations while analyzing performance characteristics using NVIDIA's Nsight Systems.
+
+## Purpose
+- Demonstrate image compression on GPU
+- Showcase performance profiling with Nsight Systems
+- Compare CPU and GPU implementations
+- Analyze different compression ratios
+
+## Technical Details
+- Input: input.jpg
+- Output: 
+  - compressed_2x_CPU.jpg
+  - compressed_2x_GPU.jpg
+  - compressed_4x_CPU.jpg
+  - compressed_4x_GPU.jpg
+- Compression ratios: 2x and 4x
+- Profiling output:
+  - compress_profile.nsys-rep
+  - compress_profile.sqlite
+
+## Performance Analysis
+- Nsight Systems profiling provides:
+  - GPU utilization
+  - Memory bandwidth
+  - Kernel execution times
+  - API call traces
+- Performance metrics:
+  - Compression time
+  - Image quality
+  - Memory usage
+  - GPU occupancy
+
+## Implementation Notes
+- Uses OpenCV for image processing
+- GPU version features:
+  - Parallel processing
+  - Memory optimization
+  - Profiling instrumentation
+- CPU version:
+  - Sequential processing
+  - Standard compression algorithms
+
+## Expected Results
+- Different compression ratios show varying:
+  - File sizes
+  - Image quality
+  - Processing times
+- Profiling data helps identify:
+  - Performance bottlenecks
+  - Memory access patterns
+  - GPU utilization
+- Quality metrics:
+  - Compression ratio
+  - Image quality
+  - Processing speed 

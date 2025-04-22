@@ -6,18 +6,12 @@
 # and typically shows significant speedup for large matrices
 
 # ===== EXECUTION COMMANDS =====
-# GPU Version (CUDA)
-# Compile the CUDA program
-nvcc -o matMulGPU matMul.cu
-
-# Run the GPU version
+# GPU Version
+nvcc -O3 -o matMulGPU matMul.cu
 ./matMulGPU
 
 # CPU Version
-# Compile the C++ program
-g++ -o matMulCPU matMul.cpp
-
-# Run the CPU version
+g++ -O3 -o matMulCPU matMul.cpp
 ./matMulCPU
 
 # Note: The GPU version uses parallel processing to multiply matrices
