@@ -6,6 +6,9 @@
 # Compile the OpenACC program
 g++ -fopenacc -o openACCPI openACC_PI.cpp
 
+# Alternative OpenACC Version (using pgc++)
+pgc++ -acc -ta=tesla -Minfo=accel -o openACCPI_pgc openACC_PI.cpp
+
 # Run the OpenACC version
 ./openACCPI
 
