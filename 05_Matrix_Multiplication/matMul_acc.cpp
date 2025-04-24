@@ -74,6 +74,26 @@ int main()
     double elapsed = double(end - start) / CLOCKS_PER_SEC * 1000.0;
     cout << "Execution Time: " << elapsed << " ms" << endl;
 
+    /*
+    // Uncomment to verify sample calculations (for a few specific elements)
+    cout << "\nVerifying calculations for selected elements:" << endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            int expectedSum = 0;
+            cout << "C[" << i << "][" << j << "] = ";
+            for (int k = 0; k < N; k++) {
+                if (k < 5) {
+                    cout << A[i * N + k] << "*" << B[k * N + j];
+                    if (k < 4) cout << " + ";
+                }
+                else if (k == 5) cout << "...";
+                expectedSum += A[i * N + k] * B[k * N + j];
+            }
+            cout << " = " << expectedSum << " (calculated: " << C[i * N + j] << ")" << endl;
+        }
+    }
+    */
+
     delete[] A;
     delete[] B;
     delete[] C;
@@ -81,7 +101,7 @@ int main()
     return 0;
 }
 
-// Compile : pgc++ -acc -ta=tesla:managed -fast matMul_acc.cu -o matMul_acc
+// Compile : pgc++ -acc -ta=tesla:managed -fast matMul_acc.cpp -o matMul_acc
 // Run : ./matMul_acc
 
 // Alternative command

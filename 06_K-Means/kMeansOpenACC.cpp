@@ -143,6 +143,44 @@ int main()
 
     std::cout << "Execution time: " << elapsed_time << " ms\n";
 
+    /*
+    // Uncomment to print cluster assignments for sample points
+    std::cout << "\nSample point assignments:\n";
+    // Count points in each cluster
+    int cluster_counts[K] = {0};
+    for (int i = 0; i < N; ++i) {
+        cluster_counts[labels[i]]++;
+    }
+
+    for (int k = 0; k < K; ++k) {
+        std::cout << "Cluster " << k << " contains " << cluster_counts[k] << " points\n";
+    }
+
+    // Print first 5 points from each cluster
+    for (int k = 0; k < K; ++k) {
+        std::cout << "\nCluster " << k << " sample points:\n";
+        int count = 0;
+        for (int i = 0; i < N && count < 5; ++i) {
+            if (labels[i] == k) {
+                std::cout << "Point " << i << ": (";
+                for (int d = 0; d < D; ++d) {
+                    std::cout << data[i * D + d] << (d < D - 1 ? ", " : "");
+                }
+                std::cout << ") - Distance from centroid: ";
+
+                // Calculate distance to centroid
+                float dist = 0.0f;
+                for (int d = 0; d < D; ++d) {
+                    float diff = data[i * D + d] - centroids[k * D + d];
+                    dist += diff * diff;
+                }
+                std::cout << sqrt(dist) << "\n";
+                count++;
+            }
+        }
+    }
+    */
+
     delete[] data;
     delete[] centroids;
     delete[] labels;

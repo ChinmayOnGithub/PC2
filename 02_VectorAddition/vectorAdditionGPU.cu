@@ -66,6 +66,15 @@ int main() {
     std::cout << "CUDA execution time: " << ms << " ms\n";
     std::cout << (valid ? "Result is correct!" : "Result is incorrect.") << std::endl;
 
+    /* 
+    // Uncomment to print the first few elements of the result vector
+    std::cout << "\nSample results (first 10 elements):\n";
+    for (int i = 0; i < 10; ++i) {
+        std::cout << "C[" << i << "] = " << h_C[i] << " (A[" << i << "] + B[" << i << "] = " 
+                  << h_A[i] << " + " << h_B[i] << " = " << h_A[i] + h_B[i] << ")\n";
+    }
+    */
+
     // Free device and host memory
     cudaFree(d_A);
     cudaFree(d_B);

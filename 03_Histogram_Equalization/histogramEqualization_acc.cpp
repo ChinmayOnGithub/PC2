@@ -107,6 +107,34 @@ int main()
         cout << "Intensity " << pair.first << " : " << pair.second << " pixels" << endl;
     }
 
+    /*
+    // Uncomment to print detailed histogram equalization information
+    cout << "\n<<<<<< ..... Detailed Histogram Equalization Information ..... >>>>>>\n";
+
+    // Print histogram and CDF information
+    cout << "\nHistogram and CDF Values (first 20 intensity levels):\n";
+    cout << "Intensity\tHistogram\tCDF\t\tNormalized CDF\n";
+    for (int i = 0; i < 20; i++) {
+        cout << i << "\t\t" << h_hist[i] << "\t\t"
+             << (sum > 0 ? (h_hist[i] * 100.0) / sum : 0) << "%\t\t"
+             << h_cdf[i] << "/255\n";
+    }
+
+    // Print transformation function
+    cout << "\nTransformation Examples (first 10 intensity levels):\n";
+    cout << "Original\tTransformed\n";
+    for (int i = 0; i < 10; i++) {
+        cout << i << "\t\t" << (int)h_cdf[i] << "\n";
+    }
+
+    // Print sample pixel transformations
+    cout << "\nSample Pixel Transformations (first 10 pixels):\n";
+    cout << "Pixel\tBefore\tAfter\n";
+    for (int i = 0; i < 10; i++) {
+        cout << i << "\t" << (int)h_in[i] << "\t" << (int)h_out[i] << "\n";
+    }
+    */
+
     // Save the equalized image
     cv::imwrite("result_OpenACC.jpg", result);
 
@@ -128,7 +156,7 @@ reduction(+:h_hist[:SIZE]) for the histogram computation
 #pragma acc parallel loop seq for the sequential CDF computation
 */
 
-// Compile : pgc++ -acc -ta=tesla:managed -fast histogramEqualization_acc.cu -o histogramEqualization_acc `pkg-config --cflags --libs opencv4`
+// Compile : pgc++ -acc -ta=tesla:managed -fast histogramEqualization_acc.cpp -o histogramEqualization_acc `pkg-config --cflags --libs opencv4`
 // Run : ./histogramEqualization_acc
 
 // alternative command

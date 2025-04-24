@@ -102,6 +102,27 @@ int main() {
     double elapsed = double(end - start) / CLOCKS_PER_SEC * 1000.0;
     cout << "GPU Execution Time: " << elapsed << " ms" << endl;
 
+    /* 
+    // Uncomment to verify sample calculations (for a few specific elements)
+    cout << "\nVerifying calculations for selected elements:" << endl;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            int manualSum = 0;
+            cout << "C[" << i << "][" << j << "] = ";
+            for (int k = 0; k < 5; k++) {
+                cout << A[i * N + k] << "*" << B[k * N + j];
+                if (k < 4) cout << " + ";
+                manualSum += A[i * N + k] * B[k * N + j];
+            }
+            // Calculate the rest of the sum for verification
+            for (int k = 5; k < N; k++) {
+                manualSum += A[i * N + k] * B[k * N + j];
+            }
+            cout << " + ... = " << C[i * N + j] << " (manually verified: " << manualSum << ")" << endl;
+        }
+    }
+    */
+
     // Free CPU memory
     delete[] A;
     delete[] B;
