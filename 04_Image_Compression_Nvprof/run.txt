@@ -16,4 +16,12 @@ nsys profile --stats=true ./compress
 g++ -O3 -o compressCPU compress.cpp `pkg-config --cflags --libs opencv4`
 ./compressCPU
 
+# OpenACC Version
+pgc++ -acc -ta=tesla:managed -fast compress_acc.cpp -o compress_acc `pkg-config --cflags --libs opencv4`
+./compress_acc
+
+# Alternative OpenACC Version
+g++ -O3 -fopenacc -o compress_acc compress_acc.cpp `pkg-config --cflags --libs opencv4`
+./compress_acc
+
 # Note: Requires input.jpg in the same directory

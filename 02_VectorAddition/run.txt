@@ -14,5 +14,13 @@ nvcc -O3 -o vectorAdditionGPU vectorAdditionGPU.cu
 g++ -O3 -o vectorAdditionCPU vectorAdditionCPU.cpp
 ./vectorAdditionCPU
 
+# OpenACC Version
+pgc++ -acc -ta=tesla:managed -fast vectorAdditionGPU_acc.cpp -o vectorAdditionGPU_acc
+./vectorAdditionGPU_acc
+
+# Alternative OpenACC Version
+g++ -O3 -fopenacc -o vectorAdditionGPU_acc vectorAdditionGPU_acc.cpp
+./vectorAdditionGPU_acc
+
 # Note: The GPU version typically runs faster for large vector sizes
 # due to parallel processing capabilities of the GPU

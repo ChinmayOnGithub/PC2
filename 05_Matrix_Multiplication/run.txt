@@ -14,6 +14,14 @@ nvcc -O3 -o matMulGPU matMul.cu
 g++ -O3 -o matMulCPU matMul.cpp
 ./matMulCPU
 
+# OpenACC Version
+pgc++ -acc -ta=tesla:managed -fast matMul_acc.cpp -o matMul_acc
+./matMul_acc
+
+# Alternative OpenACC Version
+g++ -O3 -fopenacc -o matMul_acc matMul_acc.cpp
+./matMul_acc
+
 # Note: The GPU version uses parallel processing to multiply matrices
 # and typically shows significant speedup for large matrices
 

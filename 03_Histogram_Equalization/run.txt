@@ -15,6 +15,14 @@ nvcc -O3 -o histogramEqualizationGPU histogramEqualization.cu `pkg-config --cfla
 g++ -O3 -o histogramEqualizationCPU histogramEqualization.cpp `pkg-config --cflags --libs opencv4`
 ./histogramEqualizationCPU
 
+# OpenACC Version
+pgc++ -acc -ta=tesla:managed -fast histogramEqualization_acc.cpp -o histogramEqualization_acc `pkg-config --cflags --libs opencv4`
+./histogramEqualization_acc
+
+# Alternative OpenACC Version
+g++ -O3 -fopenacc -o histogramEqualization_acc histogramEqualization_acc.cpp `pkg-config --cflags --libs opencv4`
+./histogramEqualization_acc
+
 # Note: The GPU version processes the image in parallel,
 # typically resulting in faster execution for large images
 
